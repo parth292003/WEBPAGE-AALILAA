@@ -30,6 +30,14 @@
 
 * { box-sizing: border-box; }
 
+/* ─── Global Responsive Media Rule ───────────────────────── */
+/* This ensures images and videos never bleed off the screen */
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 html, body {
   margin: 0; padding: 0;
   background: var(--bg);
@@ -40,6 +48,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  width: 100vw; /* Prevents horizontal scrolling */
 }
 
 ::selection { background: var(--ink-0); color: var(--bg); }
@@ -276,3 +285,52 @@ a { color: inherit; }
   to   { opacity: 1; transform: none; }
 }
 .fade-up { animation: fade-up 1.2s cubic-bezier(.2,.7,0,1) both; }
+
+
+/* ────────────────────────────────────────────────────────── */
+/* ─── MOBILE RESPONSIVENESS (ADDED FOR PHONES/TABLETS) ───── */
+/* ────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  
+  /* 1. Fix massive padding on mobile so content fits */
+  .section { 
+    padding: 60px 20px; 
+  }
+  
+  /* 2. Constrain containers to prevent horizontal scrolling */
+  .container, .container-wide, .container-narrow { 
+    width: 100%; 
+    padding-left: 16px; 
+    padding-right: 16px; 
+    box-sizing: border-box; 
+  }
+
+  /* 3. Fix text bleeding off the screen */
+  .cine-word {
+    white-space: pre-wrap; /* Overrides the previous "pre" which forced text onto one line */
+    word-break: break-word;
+  }
+  
+  .wordmark, h1, h2, h3, h4, h5, p {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* 4. Hide edge decorations that cause layout shifts on small screens */
+  .section-tag, .section-tag-dark { 
+    display: none; 
+  }
+
+  /* 5. Scale down the ticker gap for smaller screens */
+  .ticker {
+    gap: 24px;
+  }
+  
+  /* 6. Ensure background elements stay contained */
+  .tactical-grid, .hero-grid, .scan-vert, .scan-vert-dark {
+    max-width: 100vw;
+    overflow: hidden;
+  }
+}
