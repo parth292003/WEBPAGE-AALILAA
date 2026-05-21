@@ -602,11 +602,11 @@ function ForIndia() {
 // ─── 7. Team ──────────────────────────────────────────────
 function Team() {
   const team = [
-  ["Prashanth Irudayaraj", "CEO"],
-  ["Parth Paliwal", "COO"],
-  ["Dhruv Jain", "CTO"],
-  ["Yashaswa Varshney", "Head of AI Research"],
-  ["Arun kumar", "Head of System Architecture"]];
+  ["Prashanth Irudayaraj", "Principle Investigator"],
+  ["Parth Paliwal", "Project Lead"],
+  ["Dhruv Jain", "Cybersecurity Engineer"],
+  ["Yashaswa Varshney", "AI Engineer"],
+  ["Arun kumar", "Systems Engineer"]];
 
 
   return (
