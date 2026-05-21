@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AALILAA · C2 for India's Defence Ecosystem</title>
+  <meta name="ext-resource-dependency" content="assets/aalilaa-mark.png" data-resource-id="aalilaaMark" />
+  <template id="__bundler_thumbnail" data-bg-color="#ffffff">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#ffffff"/>
+      <g fill="#0a0a0a" font-family="Helvetica, Arial, sans-serif" font-weight="400">
+        <text x="600" y="430" text-anchor="middle" font-size="120" letter-spacing="40">AALILAA</text>
+      </g>
+      <line x1="450" y1="510" x2="750" y2="510" stroke="#0a0a0a" stroke-width="2"/>
+    </svg>
+  </template>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Geist+Mono:wght@400;500&family=Rubik:wght@500;600;700;800;900&family=Archivo:wght@500;700;800;900&family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    html, body { background: #ffffff; }
+    section[id^="sec-"] { scroll-margin-top: 64px; }
+    @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+    body { animation: pageIn 0.6s ease both; }
+  </style>
+</head>
+<body id="top">
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="js/tweaks-panel.jsx"></script>
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js" crossorigin="anonymous"></script>
+  <script type="text/babel" src="js/globe.jsx"></script>
+  <script type="text/babel" src="js/app.jsx"></script>
+</body>
+</html>

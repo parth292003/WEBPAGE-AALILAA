@@ -1,0 +1,278 @@
+/* AALILAA — White Canvas + Dark Hero, Tactical Restraint */
+
+:root {
+  --bg: #ffffff;
+  --bg-2: #f5f3ee;
+  --ink-0: #0a0a0a;
+  --ink-1: #1a1a1d;
+  --ink-2: #6b6b70;
+  --ink-3: #9a9a9f;
+  --ink-4: #c8c8cc;
+  --line: rgba(10, 10, 10, 0.08);
+  --line-2: rgba(10, 10, 10, 0.14);
+  --accent: #0a5cff;
+  --accent-soft: rgba(10, 92, 255, 0.08);
+
+  --dark-bg: #0a0c0e;
+  --dark-bg-2: #0e1115;
+  --dark-ink-0: #ffffff;
+  --dark-ink-1: #d8dde3;
+  --dark-ink-2: #6e7480;
+  --dark-line: rgba(255, 255, 255, 0.08);
+  --dark-cyan: #5fe3ff;
+  --dark-threat: #ff5a4a;
+  --dark-amber: #ffb84a;
+
+  --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "Geist Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink-0);
+  font-family: var(--body);
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--ink-0); color: var(--bg); }
+a { color: inherit; }
+
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+.section {
+  position: relative;
+  padding: 180px 48px;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 880px) { .section { padding: 100px 22px; } }
+.section.no-divider { border-top: none; }
+
+.container { max-width: 1200px; margin: 0 auto; position: relative; }
+.container-wide { max-width: 1480px; margin: 0 auto; position: relative; }
+.container-narrow { max-width: 920px; margin: 0 auto; position: relative; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.eyebrow.centered { justify-content: center; }
+.eyebrow::before,
+.eyebrow.both::after {
+  content: ""; width: 28px; height: 1px; background: var(--ink-3);
+}
+
+.reveal {
+  opacity: 0; transform: translateY(48px);
+  transition: opacity 1.4s cubic-bezier(.2,.7,0,1), transform 1.4s cubic-bezier(.2,.7,0,1);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ─── Cinematic per-word reveal ─────────────────────────── */
+.cine-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(48px);
+  filter: blur(12px);
+  transition:
+    opacity   1.05s cubic-bezier(.2,.7,0,1),
+    transform 1.05s cubic-bezier(.2,.7,0,1),
+    filter    1.05s cubic-bezier(.2,.7,0,1);
+  will-change: opacity, transform, filter;
+  white-space: pre;
+}
+.reveal.in .cine-word,
+.cine.in .cine-word {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+.cine {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hairline { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+.wordmark {
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  color: var(--ink-0);
+  text-transform: uppercase;
+}
+
+.logo-black { filter: brightness(0); }
+
+/* ─── Tactical chrome (white-canvas sections) ─────────────── */
+.tactical-grid {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(10,10,10,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10,10,10,0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 30%, transparent 85%);
+}
+.tactical-grid.fine {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(10,10,10,0.022) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10,10,10,0.022) 1px, transparent 1px);
+}
+
+.section-tag {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+.section-tag.tl { top: 32px; left: 48px; }
+.section-tag.tr { top: 32px; right: 48px; }
+.section-tag.bl { bottom: 32px; left: 48px; }
+.section-tag.br { bottom: 32px; right: 48px; }
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.55); opacity: 0.45; }
+}
+.live-dot {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ink-2);
+}
+.live-dot::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+
+@keyframes scan-vert {
+  0% { transform: translateY(-20%); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(140%); opacity: 0; }
+}
+.scan-vert {
+  position: absolute; left: 0; right: 0; height: 280px;
+  background: linear-gradient(180deg, transparent, rgba(10,10,10,0.025) 60%, rgba(10,10,10,0.06) 80%, transparent);
+  pointer-events: none;
+  animation: scan-vert 9s linear infinite;
+}
+
+.crosshair {
+  position: absolute; width: 14px; height: 14px;
+  pointer-events: none;
+}
+.crosshair::before, .crosshair::after {
+  content: ""; position: absolute; background: var(--ink-3); opacity: 0.5;
+}
+.crosshair::before { left: 50%; top: 0; width: 1px; height: 100%; transform: translateX(-50%); }
+.crosshair::after  { top: 50%; left: 0; width: 100%; height: 1px; transform: translateY(-50%); }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker {
+  display: flex; gap: 48px; white-space: nowrap;
+  animation: ticker 90s linear infinite;
+  width: max-content;
+}
+
+/* ─── Dark hero ──────────────────────────────────────────── */
+.hero-dark { background: #000; }
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 25%, #000 85%);
+  z-index: 1;
+}
+.scan-vert-dark {
+  position: absolute; left: 0; right: 0; height: 280px;
+  background: linear-gradient(180deg, transparent, rgba(95,200,255,0.04) 60%, rgba(95,200,255,0.10) 80%, transparent);
+  pointer-events: none;
+  animation: scan-vert 9s linear infinite;
+  z-index: 1;
+}
+.section-tag-dark {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  pointer-events: none;
+  z-index: 2;
+}
+.section-tag-dark.tl { top: 96px; left: 36px; }
+.section-tag-dark.tr { top: 96px; right: 36px; }
+.section-tag-dark.bl { bottom: 32px; left: 36px; }
+.section-tag-dark.br { bottom: 32px; right: 36px; }
+
+/* ─── Dark mock screenshot panel ──────────────────────────── */
+.dark-panel {
+  background: var(--dark-bg);
+  border: 1px solid var(--line-2);
+  position: relative;
+  overflow: hidden;
+}
+.dark-panel .panel-label {
+  position: absolute; top: 14px; left: 16px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.42);
+}
+.dark-panel .panel-status {
+  position: absolute; top: 14px; right: 16px;
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--dark-cyan);
+}
+
+/* ─── Cinematic fades ──────────────────────────────────── */
+/* ─── Checker / tactical paper pattern ────────────────── */
+.checker {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    conic-gradient(
+      rgba(10, 10, 10, 0.022) 0deg 90deg,
+      transparent 90deg 180deg,
+      rgba(10, 10, 10, 0.022) 180deg 270deg,
+      transparent 270deg 360deg
+    );
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 90%);
+}
+.checker.dense { background-size: 18px 18px; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+.fade-up { animation: fade-up 1.2s cubic-bezier(.2,.7,0,1) both; }
