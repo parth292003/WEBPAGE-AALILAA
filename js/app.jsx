@@ -379,7 +379,7 @@ function Manifesto() {
             width: "100%",
             padding: "0 24px"
           }}>
-            <CineSplit stagger={70}>WE CAN SEE WHAT GOD CAN'T EVEN SEE</CineSplit>
+            <CineSplit stagger={70}>WE CAN SEE WHAT EVEN GOD CAN'T SEE</CineSplit>
           </h2>
         </Reveal>
 
