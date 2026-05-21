@@ -603,7 +603,6 @@ function ForIndia() {
 function Team() {
   const [bioOpen, setBioOpen] = useState(false); 
 
-  // Added a third item in the array for optional LinkedIn URLs
   const team = [
     ["Parth Paliwal", "Project Lead", "https://www.linkedin.com/in/parth-paliwal-8883a022b/"],
     ["Dhruv Jain", "Cybersecurity Engineer"],
@@ -623,22 +622,39 @@ function Team() {
             {/* PRASHANTH - LEADERSHIP FOCUS (Click to expand) */}
             <div 
               style={{
-                padding: "48px 0",
+                padding: "30px 0", // Matched padding with the rest of the team
                 borderBottom: "1px solid var(--line)",
                 cursor: "pointer", 
               }}
               onClick={() => setBioOpen(!bioOpen)}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "20px" }}>
-                <h2 className="wordmark" style={{ fontSize: '2rem', textTransform: 'none', letterSpacing: '-0.02em', margin: 0 }}>
+              {/* ALIGNED GRID - Matches the exact layout of the list below */}
+              <div style={{ 
+                display: "grid", 
+                gridTemplateColumns: "60px 1fr 1fr", 
+                gap: 32, 
+                alignItems: "baseline" 
+              }}>
+                <span className="mono" style={{ color: "var(--ink-3)" }}>01</span>
+                
+                <h2 className="wordmark" style={{ 
+                  fontFamily: "var(--display)", 
+                  fontSize: 28, 
+                  fontWeight: 400,
+                  letterSpacing: "-0.02em", 
+                  color: "var(--ink-0)",
+                  textTransform: 'none', 
+                  margin: 0 
+                }}>
                   Prashanth Irudayaraj
                 </h2>
                 
                 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                  <span className="mono">Principle Investigator</span>
+                  <span className="mono" style={{ color: "var(--ink-2)" }}>
+                    Principle Investigator
+                  </span>
                   <span className="mono" style={{ opacity: 0.3 }}>/</span>
                   
-                  {/* PRASHANTH LINKEDIN */}
                   <a 
                     href="https://www.linkedin.com/in/pirudayaraj?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
                     target="_blank" 
@@ -646,12 +662,12 @@ function Team() {
                     className="mono"
                     onClick={(e) => e.stopPropagation()} 
                     style={{ 
-                      color: "inherit", 
+                      color: "var(--ink-2)", 
                       textDecoration: "none", 
                       transition: "color 0.2s ease" 
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.color = "var(--accent)"}
-                    onMouseLeave={(e) => e.currentTarget.style.color = "inherit"}
+                    onMouseLeave={(e) => e.currentTarget.style.color = "var(--ink-2)"}
                   >
                     LinkedIn ↗
                   </a>
@@ -664,10 +680,11 @@ function Team() {
                 overflow: "hidden",
                 transition: "max-height 0.5s cubic-bezier(0.2, 0.7, 0, 1), opacity 0.5s ease, margin-top 0.5s ease",
                 opacity: bioOpen ? 1 : 0,
-                marginTop: bioOpen ? "24px" : "0"
+                marginTop: bioOpen ? "24px" : "0",
+                paddingLeft: "92px" // 60px column + 32px gap = perfectly aligned under his name
               }}>
                 <p style={{ color: 'var(--ink-2)', lineHeight: '1.6', maxWidth: '800px', margin: 0 }}>
-                  He leads the strategic vision for the sovereign AI command and control layer, bringing extensive expertise in defense ecosystems and tactical implementations. With a proven track record in complex systems architecture, he guides AALILAA's mission to synthesize intelligence at machine speed.
+                  He leads the strategic vision for AALILAA, bringing extensive expertise in defense ecosystems and tactical implementations. With a proven track record in complex systems architecture, he guides our mission to synthesize intelligence at machine speed.
                 </p>
               </div>
             </div>
@@ -691,7 +708,6 @@ function Team() {
                   {name}
                 </span>
                 
-                {/* ROLE & OPTIONAL LINKEDIN */}
                 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                   <span className="mono" style={{ color: "var(--ink-2)" }}>
                     {role}
@@ -728,7 +744,6 @@ function Team() {
     </section>
   );
 }
-
 // ─── 8. Footer ────────────────────────────────────────────
 function Footer() {
   const tw = useTweakValues();
