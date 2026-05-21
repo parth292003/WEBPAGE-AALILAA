@@ -622,13 +622,13 @@ function Team() {
             {/* PRASHANTH - LEADERSHIP FOCUS (Click to expand) */}
             <div 
               style={{
-                padding: "30px 0", // Matched padding with the rest of the team
+                padding: "30px 0",
                 borderBottom: "1px solid var(--line)",
                 cursor: "pointer", 
               }}
               onClick={() => setBioOpen(!bioOpen)}
             >
-              {/* ALIGNED GRID - Matches the exact layout of the list below */}
+              {/* ALIGNED GRID */}
               <div style={{ 
                 display: "grid", 
                 gridTemplateColumns: "60px 1fr 1fr", 
@@ -681,10 +681,10 @@ function Team() {
                 transition: "max-height 0.5s cubic-bezier(0.2, 0.7, 0, 1), opacity 0.5s ease, margin-top 0.5s ease",
                 opacity: bioOpen ? 1 : 0,
                 marginTop: bioOpen ? "24px" : "0",
-                paddingLeft: "92px" // 60px column + 32px gap = perfectly aligned under his name
+                paddingLeft: "92px" 
               }}>
                 <p style={{ color: 'var(--ink-2)', lineHeight: '1.6', maxWidth: '800px', margin: 0 }}>
-                  He leads the strategic vision for AALILAA, bringing extensive expertise in defense ecosystems and tactical implementations. With a proven track record in complex systems architecture, he guides our mission to synthesize intelligence at machine speed.
+                  Prashanth brings extensive expertise in AI cybersecurity and mission-critical systems architecture to AALILAA. A selected member of the XPRIZE Global Visioneering Braintrust, his background spans deep-tech R&D and autonomous operations, including senior leadership roles at Tesla and Thesis. He holds an M.Sc. in Mechanical Engineering and an MBA from Georgia Tech, alongside P.Eng and CISM credentials.
                 </p>
               </div>
             </div>
