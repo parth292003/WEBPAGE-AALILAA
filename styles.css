@@ -352,7 +352,7 @@ a { color: inherit; }
 /* ────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .manifesto-title {
+  .manifesto-title, .demo-title {
     white-space: normal !important;
   }
   
