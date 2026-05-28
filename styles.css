@@ -341,12 +341,21 @@ a { color: inherit; }
 }
 .fade-up { animation: fade-up 1.2s cubic-bezier(.2,.7,0,1) both; }
 
+/* ─── Manifesto Title ────────────────────────────────────── */
+.manifesto-title {
+  white-space: nowrap;
+}
+
 
 /* ────────────────────────────────────────────────────────── */
 /* ─── MOBILE RESPONSIVENESS (UPDATED FOR PHONES/TABLETS) ─── */
 /* ────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  .manifesto-title {
+    white-space: normal !important;
+  }
+  
   
   /* 1. Fix padding on mobile so content fits */
   .section { 

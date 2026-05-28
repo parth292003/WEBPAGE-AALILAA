@@ -363,17 +363,16 @@ function Manifesto() {
 
       <div className="container" style={{ textAlign: "left", position: "relative" }}>
         <Reveal>
-          <h2 style={{
+          <h2 className="manifesto-title" style={{
             margin: "0 auto",
             fontWeight: 800,
             color: "var(--ink-0)",
-            fontSize: "clamp(32px, 8vw, 110px)",
+            fontSize: "clamp(28px, 5.6vw, 86px)",
             letterSpacing: "0.005em",
             lineHeight: 0.94,
             fontFamily: "'Bebas Neue', Anton, var(--display)",
             textAlign: "center",
             textTransform: "uppercase",
-            whiteSpace: "normal",
             width: "100%",
             padding: "0 24px"
           }}>
