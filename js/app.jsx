@@ -373,6 +373,7 @@ function Manifesto() {
             fontFamily: "'Bebas Neue', Anton, var(--display)",
             textAlign: "center",
             textTransform: "uppercase",
+            whiteSpace: "nowrap",
             width: "100%",
             padding: "0 24px"
           }}>
