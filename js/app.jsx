@@ -496,16 +496,19 @@ function Demo() {
           <Reveal delay={120}>
             <h2 className="demo-title" style={{
               margin: "44px auto 0",
-              fontWeight: 400,
-              lineHeight: 1.02,
-              letterSpacing: "-0.028em",
+              fontWeight: 800,
               color: "var(--ink-0)",
-              maxWidth: "none",
-              fontSize: "clamp(24px, 3.2vw, 45px)",
-              fontFamily: "\"Fira Sans\"",
-              whiteSpace: "nowrap"
+              fontSize: "clamp(28px, 5.6vw, 86px)",
+              letterSpacing: "0.005em",
+              lineHeight: 0.94,
+              fontFamily: "'Bebas Neue', Anton, var(--display)",
+              textAlign: "center",
+              textTransform: "uppercase",
+              whiteSpace: "nowrap",
+              width: "100%",
+              padding: "0 24px"
             }}>
-               <CineSplit><span style={{ color: "var(--ink-2)", fontSize: "inherit", fontFamily: "Geist" }}>Multi-domain threat, resolved in seconds.</span></CineSplit>
+               <CineSplit><span style={{ color: "var(--ink-2)", fontSize: "inherit", fontFamily: "inherit" }}>Multi-domain threat, resolved in seconds.</span></CineSplit>
             </h2>
           </Reveal>
         </div>
