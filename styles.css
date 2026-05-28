@@ -366,7 +366,6 @@ a { color: inherit; }
     white-space: pre-wrap !important; 
     word-break: normal !important; 
     overflow-wrap: break-word !important;
-    font-size: inherit !important; 
     line-height: 1.15 !important;
   }
   
