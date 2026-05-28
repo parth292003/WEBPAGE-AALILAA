@@ -50,7 +50,7 @@ function CineSplit({ children, stagger = 55, baseDelay = 0 }) {
         const d = baseDelay + counter.idx * stagger;
         counter.idx++;
         return (
-          <span key={`w-${key}-${i}`} className="cine-word" style={{ transitionDelay: `${d}ms`, fontSize: "60px" }}>
+          <span key={`w-${key}-${i}`} className="cine-word" style={{ transitionDelay: `${d}ms` }}>
             {tok}
           </span>);
 
@@ -99,10 +99,8 @@ function TopNav() {
 
 
   return (
-    <nav style={{
+    <nav className="top-nav" style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-      display: "grid", gridTemplateColumns: "1fr auto 1fr",
-      alignItems: "center", padding: "20px 36px",
       background: scrolled ? "rgba(255,255,255,0.94)" : "rgba(255,255,255,0)",
       backdropFilter: scrolled ? "blur(8px)" : "none",
       WebkitBackdropFilter: scrolled ? "blur(8px)" : "none",
@@ -114,7 +112,7 @@ function TopNav() {
           <Mark height={tw.logoNav} invert={!scrolled} />
         </a>
       </div>
-      <div style={{ display: "flex", justifyContent: "center", gap: 36 }}>
+      <div className="nav-links">
         {items.map(([s, href]) =>
         <a key={href} href={`#${href}`}
         style={{
@@ -129,7 +127,7 @@ function TopNav() {
           </a>
         )}
       </div>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div className="nav-status">
         <span className="live-dot" style={{ color: scrolled ? "var(--ink-2)" : "rgba(255,255,255,0.7)" }}>Sovereign · India</span>
       </div>
     </nav>);
@@ -179,17 +177,17 @@ function Hero() {
         </Reveal>
 
         <Reveal delay={220}>
-          <h1 style={{ ...{
-              margin: "40px auto 0",
-              fontFamily: "Geist, var(--display)",
-              fontWeight: 500,
-              fontSize: `clamp(40px, ${tw.heroHeadlineSize / 100 * 6.4}vw, ${Math.round(tw.heroHeadlineSize / 100 * 96)}px)`,
-              lineHeight: 1.04,
-              letterSpacing: "-0.028em",
-              color: "#ffffff",
-              maxWidth: "20ch",
-              textShadow: "0 0 60px rgba(95,200,255,0.18)"
-            }, fontSize: "80px" }}>
+          <h1 style={{
+            margin: "40px auto 0",
+            fontFamily: "Geist, var(--display)",
+            fontWeight: 500,
+            fontSize: `clamp(28px, ${tw.heroHeadlineSize / 100 * 5.5}vw, ${Math.round(tw.heroHeadlineSize / 100 * 84)}px)`,
+            lineHeight: 1.04,
+            letterSpacing: "-0.028em",
+            color: "#ffffff",
+            maxWidth: "20ch",
+            textShadow: "0 0 60px rgba(95,200,255,0.18)"
+          }}>
             <CineSplit>The command and control layer for <span style={{ color: "rgba(255,255,255,0.45)" }}>India's defence ecosystem.</span></CineSplit>
           </h1>
         </Reveal>
@@ -330,7 +328,7 @@ function HeroBackdrop() {
 // ─── 2. Problem ───────────────────────────────────────────
 function Problem() {
   return (
-    <section className="section" data-screen-label="02 Problem" style={{ padding: "220px 48px", position: "relative", overflow: "hidden", textAlign: "center" }}>
+    <section className="section" data-screen-label="02 Problem" style={{ padding: "180px 24px", position: "relative", overflow: "hidden", textAlign: "center" }}>
       <span className="section-tag tl">// 02 — The Problem</span>
       <span className="section-tag tr">Synthesis Doctrine</span>
       <div className="container-narrow" style={{ textAlign: "center", position: "relative" }}>
@@ -345,7 +343,7 @@ function Problem() {
 
             color: "var(--ink-0)",
             maxWidth: "28ch",
-            padding: "3px", margin: "40px 15px 0px", textAlign: "center", letterSpacing: "-1.1px", fontFamily: "system-ui", fontSize: "50px", fontWeight: "500"
+            padding: "3px", margin: "40px auto 0px", textAlign: "center", letterSpacing: "-0.02em", fontFamily: "system-ui", fontSize: "clamp(24px, 4.5vw, 44px)", fontWeight: "500"
           }}>
             <CineSplit>Modern defence does not fail at collection. <span style={{ color: "var(--ink-2)" }}>It fails at synthesis. AALILAA makes that failure structurally impossible.</span></CineSplit>
           </p>
@@ -369,13 +367,13 @@ function Manifesto() {
             margin: "0 auto",
             fontWeight: 800,
             color: "var(--ink-0)",
-            fontSize: "clamp(72px, 9.4vw, 168px)",
+            fontSize: "clamp(32px, 8vw, 110px)",
             letterSpacing: "0.005em",
             lineHeight: 0.94,
             fontFamily: "'Bebas Neue', Anton, var(--display)",
             textAlign: "center",
             textTransform: "uppercase",
-            whiteSpace: "nowrap",
+            whiteSpace: "normal",
             width: "100%",
             padding: "0 24px"
           }}>
@@ -442,8 +440,8 @@ function Platform() {
               lineHeight: 1.05,
               letterSpacing: "-0.028em",
               color: "var(--ink-0)",
-              maxWidth: "none", fontSize: "clamp(40px, 5.6vw, 88px)",
-              whiteSpace: "nowrap", fontFamily: "\"JetBrains Mono\""
+              maxWidth: "none", fontSize: "clamp(28px, 4.5vw, 64px)",
+              whiteSpace: "normal", fontFamily: "\"JetBrains Mono\""
             }}>
               <CineSplit>Three systems. <span style={{ color: "var(--ink-2)" }}>One reasoning core</span></CineSplit>
             </h2>
@@ -452,14 +450,7 @@ function Platform() {
 
         <div style={{ marginTop: 140, borderTop: "1px solid var(--line)" }}>
           {rows.map((r, i) => <Reveal key={r.id} delay={i * 80}>
-              <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 560px",
-              gap: 80,
-              alignItems: "center",
-              padding: "72px 0",
-              borderBottom: "1px solid var(--line)"
-            }}>
+              <div className="platform-row">
                 <div>
                   <div style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
                     <span className="mono" style={{ color: "var(--ink-3)" }}>0{i + 1} / 03</span>
@@ -480,7 +471,7 @@ function Platform() {
                     {r.desc}
                   </p>
                 </div>
-                <div className="dark-panel" style={{ height: 320 }}>
+                <div className="dark-panel visual-mock">
                   {r.visual}
                 </div>
               </div>
@@ -574,7 +565,7 @@ function Demo() {
 // ─── 6. Built for India ───────────────────────────────────
 function ForIndia() {
   return (
-    <section id="sec-india" className="section" data-screen-label="06 India" style={{ padding: "220px 48px", position: "relative", overflow: "hidden" }}>
+    <section id="sec-india" className="section" data-screen-label="06 India" style={{ padding: "180px 24px", position: "relative", overflow: "hidden" }}>
       <span className="section-tag tl">// 06 — Built for India</span>
       <span className="section-tag tr">Sovereign · Accountable</span>
       <div className="container-narrow" style={{ textAlign: "center", position: "relative" }}>
@@ -589,9 +580,9 @@ function ForIndia() {
             letterSpacing: "-0.022em",
             color: "var(--ink-0)",
             maxWidth: "28ch",
-            fontWeight: "600", fontSize: "78px"
+            fontWeight: "600", fontSize: "clamp(28px, 5.5vw, 68px)"
           }}>
-            <CineSplit>Built on Indian soil. <span style={{ color: "var(--ink-2)", fontSize: "70px" }}>Operated under Indian authority. Accountable to Indian doctrine.</span></CineSplit>
+            <CineSplit>Built on Indian soil. <span style={{ color: "var(--ink-2)", fontSize: "clamp(24px, 4.8vw, 58px)" }}>Operated under Indian authority. Accountable to Indian doctrine.</span></CineSplit>
           </p>
         </Reveal>
       </div>
@@ -629,12 +620,7 @@ function Team() {
               onClick={() => setBioOpen(!bioOpen)}
             >
               {/* ALIGNED GRID */}
-              <div style={{ 
-                display: "grid", 
-                gridTemplateColumns: "60px 1fr 1fr", 
-                gap: 32, 
-                alignItems: "baseline" 
-              }}>
+              <div className="team-row">
                 <span className="mono" style={{ color: "var(--ink-3)" }}>01</span>
                 
                 <h2 className="wordmark" style={{ 
@@ -675,14 +661,7 @@ function Team() {
               </div>
 
               {/* EXPANDABLE BIO */}
-              <div style={{
-                maxHeight: bioOpen ? "500px" : "0",
-                overflow: "hidden",
-                transition: "max-height 0.5s cubic-bezier(0.2, 0.7, 0, 1), opacity 0.5s ease, margin-top 0.5s ease",
-                opacity: bioOpen ? 1 : 0,
-                marginTop: bioOpen ? "24px" : "0",
-                paddingLeft: "92px" 
-              }}>
+              <div className={`team-bio ${bioOpen ? "open" : ""}`}>
                 <p style={{ color: 'var(--ink-2)', lineHeight: '1.6', maxWidth: '800px', margin: 0 }}>
                   Prashanth brings extensive expertise in AI cybersecurity and mission-critical systems architecture to AALILAA. A selected member of the XPRIZE Global Visioneering Braintrust, his background spans deep-tech R&D and autonomous operations, including senior leadership roles at Tesla and Thesis. He holds an M.Sc. in Mechanical Engineering and an MBA from Georgia Tech, alongside P.Eng and CISM credentials.
                 </p>
@@ -691,14 +670,7 @@ function Team() {
 
             {/* REST OF THE TEAM */}
             {team.map(([name, role, linkedInUrl], i) =>
-              <div key={name} style={{
-                display: "grid",
-                gridTemplateColumns: "60px 1fr 1fr",
-                gap: 32,
-                alignItems: "baseline",
-                padding: "30px 0",
-                borderBottom: "1px solid var(--line)"
-              }}>
+              <div key={name} className="team-row">
                 <span className="mono" style={{ color: "var(--ink-3)" }}>0{i + 2}</span> 
                 
                 <span style={{
@@ -753,12 +725,7 @@ function Footer() {
       borderTop: "1px solid var(--line)",
       position: "relative"
     }}>
-      <div className="container-wide" style={{
-        display: "grid",
-        gridTemplateColumns: "1fr auto 1fr",
-        alignItems: "center",
-        gap: 24
-      }}>
+      <div className="container-wide footer-content">
         <div style={{ display: "flex", alignItems: "center" }}>
           <Mark height={tw.logoFooter} />
         </div>

@@ -150,6 +150,43 @@ a { color: inherit; }
 .expandable-bio {
   padding-left: 92px;
 }
+.platform-row {
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 80px;
+  align-items: center;
+  padding: 72px 0;
+  border-bottom: 1px solid var(--line);
+}
+.visual-mock {
+  height: 320px;
+}
+.team-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr;
+  gap: 32px;
+  align-items: baseline;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+.team-bio {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.2, 0.7, 0, 1), opacity 0.5s ease, margin-top 0.5s ease;
+  opacity: 0;
+  padding-left: 92px;
+}
+.team-bio.open {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 24px;
+}
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
 
 /* ─── Tactical chrome (white-canvas sections) ─────────────── */
 .tactical-grid {
@@ -329,8 +366,8 @@ a { color: inherit; }
     white-space: pre-wrap !important; 
     word-break: normal !important; 
     overflow-wrap: break-word !important;
-    font-size: clamp(2rem, 10vw, 3.5rem) !important;
-    line-height: 1.1 !important;
+    font-size: inherit !important; 
+    line-height: 1.15 !important;
   }
   
   p {
@@ -341,13 +378,21 @@ a { color: inherit; }
   /* 4. Nav Bar Mobile Overrides */
   .top-nav {
     display: flex !important;
-    flex-direction: column !important;
-    padding: 16px 20px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 16px !important;
     gap: 16px !important;
   }
   .nav-links {
-    gap: 20px !important;
+    display: flex !important;
+    gap: 12px !important;
+    justify-content: flex-end !important;
     flex-wrap: wrap !important;
+  }
+  .nav-links a {
+    font-size: 9px !important;
+    letter-spacing: 0.16em !important;
   }
   .nav-status {
     display: none !important; /* Hides "Sovereign India" on mobile to save vertical space */
@@ -365,25 +410,59 @@ a { color: inherit; }
     gap: 40px !important;
   }
 
-  /* 7. Ensure the dark panels span the full width */
-  .dark-panel {
-    width: 100% !important;
-    max-width: 100vw;
+  /* 7. Ensure the platform rows stack vertically on mobile */
+  .platform-row {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    padding: 48px 0 !important;
+  }
+
+  /* 8. Ensure the visual mocks adapt proportionally */
+  .visual-mock {
     height: auto !important;
-    min-height: 300px; 
+    aspect-ratio: 600 / 320 !important;
+    min-height: unset !important;
   }
 
-  /* 8. Hide edge decorations that cause layout shifts on small screens */
+  /* 9. Team Grid Mobile Vertical Stack */
+  .team-row {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 20px 0 !important;
+  }
+  .team-row > span.mono {
+    margin-bottom: 4px;
+  }
+  .team-row h2 {
+    font-size: 22px !important;
+    margin-bottom: 6px !important;
+  }
+  .team-bio {
+    padding-left: 0 !important;
+  }
+
+  /* 10. Footer Mobile Vertical Stack */
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+  .footer-content > div {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* 11. Hide decorations causing overflow */
   .section-tag, .section-tag-dark { 
-    display: none; 
+    display: none !important; 
   }
 
-  /* 9. Scale down the ticker gap for smaller screens */
-  .ticker {
-    gap: 24px;
+  /* 12. Scale down Hero padding on mobile */
+  #sec-hero {
+    padding: 120px 20px 80px !important;
   }
-  
-  /* 10. Ensure background elements stay contained */
+
+  /* 13. Ensure background elements stay contained */
   .tactical-grid, .hero-grid, .scan-vert, .scan-vert-dark {
     max-width: 100vw;
     overflow: hidden;
